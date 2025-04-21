@@ -8,18 +8,19 @@ int arr[100000];
 
 void gisu (int arr[], int exp) {
     vector<int> new_arr;
-    if (exp < 100000) {
-        for (int i = 0; i < 10; i++){
-            for (int j = 0; j < n; j++) {
-                if (arr[j] / exp % 10 == i) {
-                    new_arr.push_back(i);
-                }
+    if (exp > 100000)
+        return;
+    for (int i = 0; i < 10; i++){
+        for (int j = 0; j < n; j++) {
+            if (arr[j] / exp % 10 == i) {
+                new_arr.push_back(arr[j]);
             }
         }
     }
     for (int i = 0; i < n; i++){
         arr[i] = new_arr[i];
     }
+    gisu(arr, exp*10);
 }
 
 int main() {
